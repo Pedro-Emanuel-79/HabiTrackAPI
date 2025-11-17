@@ -117,7 +117,7 @@ public class Usuario {
         this.habitos = habitos;
     }
 
-    @OneToMany(mappedBy = "participante", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonManagedReference
     private List<Habito> habitos;
 

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário Participante</title>
+
+</head>
+<body>
+    <h1 th:text="${usuario.id != null} ? 'Editar Usuário' : 'Cadastrar Usuário'"></h1>
+
+    <form th:action="@{/usuario/salvar}" th:object="${usuario }" method="post">
+        <input type="hidden" th:field="*{id}">
+
+        <label>Nome:</label>
+        <input type="text" th:field="*{nome}" required><br><br>
+
+        <label>Sobrenome:</label>
+        <input type="text" th:field="*{sobrenome}" required><br><br>
+
+        <label>Data de Nascimento:</label>
+        <input type="date" th:field="*{dataNascimento}" required><br><br>
+
+        <label>CPF:</label>
+        <input type="text" th:field="*{cpf}" required><br><br>
+
+        <label>Email:</label>
+        <input type="email" th:field="*{email}" required><br><br>
+
+        <label>Telefone:</label>
+        <input type="tel" th:field="*{telefone}" required><br><br>
+
+        <label>Gênero:</label>
+        <input type="text" th:field="*{genero}" required><br><br>
+        
+        <label>Endereço:</label>
+        <input type="text" th:field="*{endereco}" required><br><br>
+        
+        <label>Ocupação:</label>
+        <input type="text" th:field="*{ocupacao}" required><br><br>
+
+        <button type="submit" th:text="${usuario.id != null} ? 'Atualizar' : 'Salvar'"></button>
+    </form>
+</body>
+</html>

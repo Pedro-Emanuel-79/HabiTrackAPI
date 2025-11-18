@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Participantes</title>
+
+</head>
+<body>
+    <h1>Lista de Usuários e Hábitos</h1>
+
+    <a th:href="@{/usuaripo/novo}">
+        <!-- TEM QUE LINKAR COM A PAGINA FORMULARIOOOOO -->
+        <button>+ Novo Usuário</button>
+    </a>
+    
+    <hr>
+
+    <h2>Usuários Cadastrados</h2>
+    <div class="lista" id="lista">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Sobrenome</th>
+                    <th>Data de Nascimento</th>
+                    <th>CPF</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                    <th>Gênero</th>
+                    <th>Endereço</th>
+                    <th>Ocupação</th>
+                    <th>Descrição</th>
+                    <th>Categoria</th>
+                    <th>Objetivo</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="p : ${usuario}">
+                    <td th:text="${p.id}"></td>
+                    <td th:text="${p.nome}"></td>
+                    <td th:text="${p.sobrenome}"></td>
+                    <td th:text="${p.dataNascimento}"></td>
+                    <td th:text="${p.cpf}"></td>
+                    <td th:text="${p.email}"></td>
+                    <td th:text="${p.telefone}"></td>
+                    <td th:text="${p.genero}"></td>
+                    <td th:text="${p.endereco}"></td>
+                    <td th:text="${p.ocupacao}"></td>
+                    <td th:text="${p.descricao}"></td>
+                    <td th:text="${p.categoria}"></td>
+                    <td th:text="${p.objetivo}"></td>
+                    
+                    <td>
+                        <a th:href="@{/usuario/editar/{id}(id=${p.id})}">Editar</a>
+                        <form th:action="@{/usuario/deletar/{id}(id=${p.id})}" method="post" style="display:inline;">
+                            <button type="submit" class="btn-excluir" onclick="return confirm('Deseja excluir este participante?')">
+                                <i class='bxr  bx-trash-x'  ></i> Excluir
+                            </button>
+                        </form>
+                    </td>
+                    
+                    <td>
+                        <a th:href="@{/habito/novo(usuarioId=${p.id})}">
+                            <!-- TEM QUE LINKAR COM A PAGINA DE CADASTRAR HABITOSSSS -->
+                            <button type="button">Adicionar Hábitos</button>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

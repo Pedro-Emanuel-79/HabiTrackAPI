@@ -21,7 +21,7 @@ public class UsuarioController {
     public Usuario cadastrarusuario(@RequestBody Usuario usuario) {
         Usuario usuarioCadastrado = usuarioRepository.save(usuario);
         return usuarioCadastrado;
-    }
+    } 
 
     @PutMapping("/usuario/{id}/editar")
     public Usuario editarusuario(@PathVariable Long id, @RequestBody Usuario usuarioAtualizado) {
@@ -32,7 +32,7 @@ public class UsuarioController {
         usuarioSalvo.setCpf(usuarioAtualizado.getCpf());
         usuarioSalvo.setEmail(usuarioAtualizado.getEmail());
         usuarioSalvo.setTelefone(usuarioAtualizado.getTelefone());
-        usuarioSalvo.setTurma(usuarioAtualizado.getTurma());
+        usuarioSalvo.setGenero(usuarioAtualizado.getGenero());
         usuarioSalvo.setEndereco(usuarioAtualizado.getEndereco());
         usuarioSalvo.setOcupacao(usuarioAtualizado.getOcupacao());
         return usuarioService.save(usuarioSalvo);

@@ -25,7 +25,7 @@ public class Usuario {
     private String cpf;
     private String email;
     private String telefone;
-    private String turma;
+    private String genero;
     private String endereco;
     private String ocupacao;
 
@@ -85,12 +85,12 @@ public class Usuario {
         this.telefone = telefone;
     }
 
-    public String getTurma() {
-        return turma;
+    public String getGenero() {
+        return genero;
     }
 
-    public void setTurma(String turma) {
-        this.turma = turma;
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
 
     public String getEndereco() {

@@ -32,7 +32,7 @@ public class UsuarioController {
         usuarioSalvo.setCpf(usuarioAtualizado.getCpf());
         usuarioSalvo.setEmail(usuarioAtualizado.getEmail());
         usuarioSalvo.setTelefone(usuarioAtualizado.getTelefone());
-        usuarioSalvo.setTurma(usuarioAtualizado.getTurma());
+        usuarioSalvo.setSenha(usuarioAtualizado.getSenha());
         usuarioSalvo.setEndereco(usuarioAtualizado.getEndereco());
         usuarioSalvo.setOcupacao(usuarioAtualizado.getOcupacao());
         return usuarioService.save(usuarioSalvo);

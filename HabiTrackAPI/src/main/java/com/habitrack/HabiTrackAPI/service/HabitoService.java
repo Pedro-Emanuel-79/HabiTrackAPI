@@ -3,6 +3,7 @@ package com.habitrack.HabiTrackAPI.service;
 import com.habitrack.HabiTrackAPI.model.Habito;
 import com.habitrack.HabiTrackAPI.model.Usuario;
 import com.habitrack.HabiTrackAPI.repository.HabitoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.NoSuchElementException;
 @Service
 public class HabitoService {
 
+    @Autowired
     private HabitoRepository habitoRepository;
 
     public Habito save(Habito habito) {
@@ -25,8 +27,8 @@ public class HabitoService {
         return habitoRepository.findAll();
     }
 
-    public void deletarHabitoId(Long idHabito) {
-        habitoRepository.deleteById(idHabito);
+    public void deletarHabitoId(Long id) {
+        habitoRepository.deleteById(id);
     }
 
 

@@ -22,7 +22,7 @@ public class HabitoController {
     @PostMapping("/habito")
     @ResponseStatus(HttpStatus.CREATED)
     public Habito cadastrarHabito(@RequestBody Habito habito){
-        Habito habitoCadastrado = habitoRepository.save(habito);
+        Habito habitoCadastrado = habitoService.save(habito);
         return habitoCadastrado;
     }
 
@@ -43,7 +43,7 @@ public class HabitoController {
 
     @DeleteMapping("/habito/{id}/delete")
     public void deleteHabitoId(@PathVariable Long id){
-        habitoRepository.deleteById(id);
+        habitoService.deletarHabitoId(id);
     }
 
 }

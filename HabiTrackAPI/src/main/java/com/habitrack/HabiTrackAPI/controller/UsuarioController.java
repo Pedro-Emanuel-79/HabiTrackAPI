@@ -19,7 +19,7 @@ public class UsuarioController {
     @PostMapping("/usuario")
     @ResponseStatus(HttpStatus.CREATED)
     public Usuario cadastrarusuario(@RequestBody Usuario usuario) {
-        Usuario usuarioCadastrado = usuarioRepository.save(usuario);
+        Usuario usuarioCadastrado = usuarioService.save(usuario);
         return usuarioCadastrado;
     }
 
@@ -45,6 +45,6 @@ public class UsuarioController {
 
     @DeleteMapping("/usuario/{id}/delete")
     public void deleteusuarioId(@PathVariable Long id){
-        usuarioRepository.deleteById(id);    }
+        usuarioService.deleteusuarioId(id);    }
 
 }

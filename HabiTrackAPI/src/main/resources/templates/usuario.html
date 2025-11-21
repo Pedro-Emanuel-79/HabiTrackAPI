@@ -7,9 +7,8 @@
 
 </head>
 <body>
-    <h1 th:text="${usuario.id != null} ? 'Editar Usuário' : 'Cadastrar Usuário'"></h1>
 
-    <form th:action="@{/usuario/salvar}" th:object="${usuario }" method="post">
+    <form th:action="@{/usuarios/enviar}" th:object="${usuario }" method="post">
         <input type="hidden" th:field="*{id}">
 
         <label>Nome:</label>
@@ -30,16 +29,17 @@
         <label>Telefone:</label>
         <input type="tel" th:field="*{telefone}" required><br><br>
 
-        <label>Gênero:</label>
-        <input type="text" th:field="*{genero}" required><br><br>
+        <label>Senha:</label>
+        <input type="password" th:field="*{sehna}" required><br><br>
         
         <label>Endereço:</label>
         <input type="text" th:field="*{endereco}" required><br><br>
         
         <label>Ocupação:</label>
         <input type="text" th:field="*{ocupacao}" required><br><br>
-
+        
         <button type="submit" th:text="${usuario.id != null} ? 'Atualizar' : 'Salvar'">Enviar</button>
+        
     </form>
 </body>
 </html>

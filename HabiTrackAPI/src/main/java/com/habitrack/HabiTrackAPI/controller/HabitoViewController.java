@@ -42,7 +42,7 @@ public class HabitoViewController {
         }
 
         habitoService.save(habito);
-        return "redirect:/templates/habito/listar";
+        return "redirect:/habito/listar";
     }
 
     @GetMapping("/habito/{id}/editar")
@@ -50,7 +50,7 @@ public class HabitoViewController {
         Habito habito = habitoService.buscarHabitoId(id);
         model.addAttribute("habito", habito);
         model.addAttribute("usuario", usuarioService.listarUsuarios());
-        return "/templates/habito/editar";
+        return "/habito/editar";
     }
 
     @PostMapping("/habito/{id}/editar")
@@ -67,12 +67,12 @@ public class HabitoViewController {
         }
 
         habitoService.save(habito);
-        return "redirect:/templates/habito/listar";
+        return "redirect:/habito/listar";
     }
 
     @GetMapping("/habito/{id}/delete")
     public String deleteHabito(@PathVariable Long id){
         habitoService.deletarHabitoId(id);
-        return "redirect:/templates/habito/listar";
+        return "redirect:/habito/listar";
     }
 }

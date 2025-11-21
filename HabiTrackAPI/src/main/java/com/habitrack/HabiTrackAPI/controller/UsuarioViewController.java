@@ -22,29 +22,29 @@ public class UsuarioViewController {
     }
 
     // ----- FORMULÁRIO DE CADASTRO -----
-    @GetMapping("/usuario/cadastrar")
+    @GetMapping("/usuarios/cadastrar")
     public String mostrarFormularioCadastro(Model model) {
         model.addAttribute("usuario", new Usuario());
-        return "/templates/usuarios/cadastrar";
+        return "/usuarios/cadastrar";
     }
 
     // ----- ENVIAR FORM DE CADASTRO -----
-    @PostMapping("/usuario/cadastrar")
+    @PostMapping("/usuarios/enviar")
     public String cadastrarUsuario(@ModelAttribute Usuario usuario) {
         usuarioService.save(usuario);
-        return "redirect:/templates/usuario/listar";
+        return "redirect:/usuarios";
     }
 
     // ----- FORMULÁRIO DE EDIÇÃO -----
-    @GetMapping("/usuario/{id}/editar")
+    @GetMapping("/usuarios/{id}/editar")
     public String mostrarFormularioEdicao(@PathVariable Long id, Model model) {
         Usuario usuario = usuarioService.buscarUsuarioId(id);
         model.addAttribute("usuario", usuario);
-        return "/templates/usuarios/editar";
+        return "/usuarios/editar";
     }
 
     // ----- ENVIAR FORM DE EDIÇÃO -----
-    @PostMapping("/usuario/{id}/editar")
+    @PostMapping("/usuarios/{id}/editar")
     public String editarUsuario(@PathVariable Long id, @ModelAttribute Usuario usuarioAtualizado) {
         Usuario usuario = usuarioService.buscarUsuarioId(id);
 
@@ -60,14 +60,14 @@ public class UsuarioViewController {
 
         usuarioService.save(usuario);
 
-        return "redirect:/templates/usuario/listar";
+        return "redirect:/usuarios/listar";
     }
 
     // ----- DELETE -----
     @GetMapping("/usuario/{id}/delete")
     public String deleteUsuario(@PathVariable Long id) {
         usuarioService.deleteusuarioId(id);
-        return "redirect:/templates/usuario/listar";
+        return "redirect:/usuarios/listar";
     }
 
 

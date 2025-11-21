@@ -20,6 +20,11 @@ public class Habito {
     private String categoria;
     private String objetivo;
 
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    @JsonBackReference
+    private Usuario usuario;
+
     public long getId() {
         return id;
     }
@@ -68,8 +73,4 @@ public class Habito {
         this.usuario = usuario;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "usuario_id")
-    @JsonBackReference
-    private Usuario usuario;
 }

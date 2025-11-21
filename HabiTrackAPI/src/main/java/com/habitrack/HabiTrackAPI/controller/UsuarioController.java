@@ -19,9 +19,9 @@ public class UsuarioController {
     @PostMapping("/usuario")
     @ResponseStatus(HttpStatus.CREATED)
     public Usuario cadastrarusuario(@RequestBody Usuario usuario) {
-        Usuario usuarioCadastrado = usuarioRepository.save(usuario);
+        Usuario usuarioCadastrado = usuarioService.save(usuario);
         return usuarioCadastrado;
-    } 
+    }
 
     @PutMapping("/usuario/{id}/editar")
     public Usuario editarusuario(@PathVariable Long id, @RequestBody Usuario usuarioAtualizado) {
@@ -32,7 +32,7 @@ public class UsuarioController {
         usuarioSalvo.setCpf(usuarioAtualizado.getCpf());
         usuarioSalvo.setEmail(usuarioAtualizado.getEmail());
         usuarioSalvo.setTelefone(usuarioAtualizado.getTelefone());
-        usuarioSalvo.setGenero(usuarioAtualizado.getGenero());
+        usuarioSalvo.setSenha(usuarioAtualizado.getSenha());
         usuarioSalvo.setEndereco(usuarioAtualizado.getEndereco());
         usuarioSalvo.setOcupacao(usuarioAtualizado.getOcupacao());
         return usuarioService.save(usuarioSalvo);
@@ -45,6 +45,6 @@ public class UsuarioController {
 
     @DeleteMapping("/usuario/{id}/delete")
     public void deleteusuarioId(@PathVariable Long id){
-        usuarioRepository.deleteById(id);    }
+        usuarioService.deleteusuarioId(id);    }
 
 }

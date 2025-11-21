@@ -25,7 +25,7 @@ public class Usuario {
     private String cpf;
     private String email;
     private String telefone;
-    private String genero;
+    private String senha;
     private String endereco;
     private String ocupacao;
 
@@ -85,12 +85,12 @@ public class Usuario {
         this.telefone = telefone;
     }
 
-    public String getGenero() {
-        return genero;
+    public String getSenha() {
+        return senha;
     }
 
-    public void setGenero(String genero) {
-        this.genero = genero;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public String getEndereco() {

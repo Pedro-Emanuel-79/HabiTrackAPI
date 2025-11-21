@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form th:action="@{/usuario/salvar}" th:object="${usuario }" method="post">
+        <input type="hidden" th:field="*{id}">
+
+        <label>Nome:</label>
+        <input type="text" th:field="*{nome}" required><br><br>
+
+        <label>Descrição:</label>
+        <input type="text" th:field="*{descricao}" required><br><br>
+
+        <label>Categoria:</label>
+        <input type="text" th:field="*{Categoria}" required><br><br>
+
+        <label>Objetivo:</label>
+        <input type="text" th:field="*{objetivo}" required><br><br>
+
+        <button type="submit" th:text="${usuario.id != null} ? 'Atualizar' : 'Salvar'">Enviar</button>
+    </form>
+</body>
+</html>

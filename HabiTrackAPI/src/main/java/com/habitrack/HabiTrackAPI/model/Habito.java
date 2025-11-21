@@ -20,7 +20,7 @@ public class Habito {
     private String categoria;
     private String objetivo;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "usuario_id")
     @JsonBackReference
     private Usuario usuario;

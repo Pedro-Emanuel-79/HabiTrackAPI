@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <form th:action="@{/usuarios/enviar}" th:object="${usuario }" method="post">
+    <form th:action="@{/usuario/enviar}" th:object="${usuario}" method="post">
         <input type="hidden" th:field="*{id}">
 
         <label>Nome:</label>
@@ -30,7 +30,7 @@
         <input type="tel" th:field="*{telefone}" required><br><br>
 
         <label>Senha:</label>
-        <input type="password" th:field="*{sehna}" required><br><br>
+        <input type="password" th:field="*{senha}" required><br><br>
         
         <label>Endereço:</label>
         <input type="text" th:field="*{endereco}" required><br><br>

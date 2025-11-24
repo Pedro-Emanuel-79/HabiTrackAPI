@@ -14,37 +14,38 @@ public class UsuarioViewController {
     @Autowired
     private UsuarioService usuarioService;
 
-    
-    @GetMapping("/usuarios/listar")
+
+    @GetMapping("/usuario/listar")
     public String listarUsuarios(Model model) {
         model.addAttribute("usuarios", usuarioService.listarUsuarios());
-        return "usuarios/listar";
+        return "listaUsuario";
     }
 
 
-    @GetMapping("/usuarios/cadastrar")
+    @GetMapping("/usuario/cadastrar")
     public String mostrarFormularioCadastro(Model model) {
         model.addAttribute("usuario", new Usuario());
-        return "/usuarios/cadastrar";
+        return "usuario";
     }
 
 
-    @PostMapping("/usuarios/enviar")
+    @PostMapping("/usuario/enviar")
     public String cadastrarUsuario(@ModelAttribute Usuario usuario) {
         usuarioService.save(usuario);
-        return "redirect:/usuarios";
+        return "redirect:/usuario/listar";
+
     }
 
 
-    @GetMapping("/usuarios/{id}/editar")
+    @GetMapping("/usuario/{id}/editar")
     public String mostrarFormularioEdicao(@PathVariable Long id, Model model) {
         Usuario usuario = usuarioService.buscarUsuarioId(id);
         model.addAttribute("usuario", usuario);
-        return "/usuarios/editar";
+        return "editarUsuario";
     }
 
 
-    @PostMapping("/usuarios/{id}/editar")
+    @PostMapping("/usuario/{id}/editar")
     public String editarUsuario(@PathVariable Long id, @ModelAttribute Usuario usuarioAtualizado) {
         Usuario usuario = usuarioService.buscarUsuarioId(id);
 
@@ -60,14 +61,14 @@ public class UsuarioViewController {
 
         usuarioService.save(usuario);
 
-        return "redirect:/usuarios/listar";
+        return "redirect:/usuario/listar";
     }
 
 
     @GetMapping("/usuario/{id}/delete")
-    public String deleteUsuario(@PathVariable Long id) {
+    public String deleteUsuarioId(@PathVariable Long id) {
         usuarioService.deleteusuarioId(id);
-        return "redirect:/usuarios/listar";
+        return "redirect:/usuario/listar";
     }
 
 

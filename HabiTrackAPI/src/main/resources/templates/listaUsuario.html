@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Usuários</title>
+</head>
+<body>
+
+<h1>Lista de Usuários e Hábitos</h1>
+
+<a th:href="@{/usuario/cadastrar}">
+    <button>Adicionar Novo Usuário</button>
+</a>
+
+<hr>
+
+<h2>Usuários Cadastrados</h2>
+
+<div class="lista" id="lista">
+    <table border="1" cellpadding="5">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Sobrenome</th>
+            <th>Data de Nascimento</th>
+            <th>CPF</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>Senha</th>
+            <th>Endereço</th>
+            <th>Ocupação</th>
+            <th>Ações</th>
+
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="u : ${usuarios}">
+            <td th:text="${u.id}"></td>
+            <td th:text="${u.nome}"></td>
+            <td th:text="${u.sobrenome}"></td>
+            <td th:text="${u.dataNascimento}"></td>
+            <td th:text="${u.cpf}"></td>
+            <td th:text="${u.email}"></td>
+            <td th:text="${u.telefone}"></td>
+            <td th:text="${u.senha}"></td>
+            <td th:text="${u.endereco}"></td>
+            <td th:text="${u.ocupacao}"></td>
+
+
+            <td>
+                <a th:href="@{/usuario/{id}/editar(id=${u.id})}">Editar</a>
+
+                <form th:action="@{/usuario/{id}/delete(id=${u.id})}"
+                      method="get" style="display:inline;">
+                    <button type="submit" onclick="return confirm('Deseja excluir este usuário?')">
+                        Excluir
+                    </button>
+                </form>
+                <a th:href="@{/habito/cadastrar(usuarioId=${u.id})}">
+                    <button type="button">Adicionar Hábitos</button>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+</div>
+
+</body>
+</html>

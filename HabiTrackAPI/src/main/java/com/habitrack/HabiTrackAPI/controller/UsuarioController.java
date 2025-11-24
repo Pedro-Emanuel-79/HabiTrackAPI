@@ -18,13 +18,13 @@ public class UsuarioController {
 
     @PostMapping("/usuario")
     @ResponseStatus(HttpStatus.CREATED)
-    public Usuario cadastrarusuario(@RequestBody Usuario usuario) {
+    public Usuario cadastrarUsuario(@RequestBody Usuario usuario) {
         Usuario usuarioCadastrado = usuarioService.save(usuario);
         return usuarioCadastrado;
     }
 
     @PutMapping("/usuario/{id}/editar")
-    public Usuario editarusuario(@PathVariable Long id, @RequestBody Usuario usuarioAtualizado) {
+    public Usuario editarUsuario(@PathVariable Long id, @RequestBody Usuario usuarioAtualizado) {
         Usuario usuarioSalvo = usuarioService.buscarUsuarioId(id);
         usuarioSalvo.setNome(usuarioAtualizado.getNome());
         usuarioSalvo.setSobrenome(usuarioAtualizado.getSobrenome());
@@ -44,7 +44,7 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/usuario/{id}/delete")
-    public void deleteusuarioId(@PathVariable Long id){
+    public void deleteUsuarioId(@PathVariable Long id){
         usuarioService.deleteusuarioId(id);    }
 
 }

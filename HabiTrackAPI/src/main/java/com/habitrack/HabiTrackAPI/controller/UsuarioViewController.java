@@ -14,28 +14,28 @@ public class UsuarioViewController {
     @Autowired
     private UsuarioService usuarioService;
 
-    // ----- LISTAR TODOS -----
+    
     @GetMapping("/usuarios/listar")
     public String listarUsuarios(Model model) {
         model.addAttribute("usuarios", usuarioService.listarUsuarios());
         return "usuarios/listar";
     }
 
-    // ----- FORMULÁRIO DE CADASTRO -----
+
     @GetMapping("/usuarios/cadastrar")
     public String mostrarFormularioCadastro(Model model) {
         model.addAttribute("usuario", new Usuario());
         return "/usuarios/cadastrar";
     }
 
-    // ----- ENVIAR FORM DE CADASTRO -----
+
     @PostMapping("/usuarios/enviar")
     public String cadastrarUsuario(@ModelAttribute Usuario usuario) {
         usuarioService.save(usuario);
         return "redirect:/usuarios";
     }
 
-    // ----- FORMULÁRIO DE EDIÇÃO -----
+
     @GetMapping("/usuarios/{id}/editar")
     public String mostrarFormularioEdicao(@PathVariable Long id, Model model) {
         Usuario usuario = usuarioService.buscarUsuarioId(id);
@@ -43,7 +43,7 @@ public class UsuarioViewController {
         return "/usuarios/editar";
     }
 
-    // ----- ENVIAR FORM DE EDIÇÃO -----
+
     @PostMapping("/usuarios/{id}/editar")
     public String editarUsuario(@PathVariable Long id, @ModelAttribute Usuario usuarioAtualizado) {
         Usuario usuario = usuarioService.buscarUsuarioId(id);
@@ -63,7 +63,7 @@ public class UsuarioViewController {
         return "redirect:/usuarios/listar";
     }
 
-    // ----- DELETE -----
+
     @GetMapping("/usuario/{id}/delete")
     public String deleteUsuario(@PathVariable Long id) {
         usuarioService.deleteusuarioId(id);

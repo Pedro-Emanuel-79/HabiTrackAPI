@@ -19,8 +19,8 @@ public class HabitoService {
         return habitoRepository.save(habito);
     }
 
-    public Habito buscarHabitoId(Long idHabito) {
-        return habitoRepository.findById(idHabito).orElseThrow(()->new NoSuchElementException("Habito não encontrado"));
+    public Habito buscarHabitoId(Long id) {
+        return habitoRepository.findById(id).orElseThrow(()->new NoSuchElementException("Habito não encontrado"));
     }
 
     public List<Habito> listarTodosHabitos() {

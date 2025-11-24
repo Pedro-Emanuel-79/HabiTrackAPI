@@ -51,23 +51,22 @@
 
 
             <td>
-                <a th:href="@{/usuario/{id}/editar(id=${u.id})}">Editar</a>
-
+                <form th:action="@{/usuario/{id}/editar(id=${u.id})}"
+                    method="get" style="display:inline;">
+                    <button type="submit" onclick="return confirm('Deseja editar este usuário?')">
+                        Editar
+                    </button>
+                </form>
                 <form th:action="@{/usuario/{id}/delete(id=${u.id})}"
-                      method="get" style="display:inline;">
+                    method="get" style="display:inline;">
                     <button type="submit" onclick="return confirm('Deseja excluir este usuário?')">
                         Excluir
                     </button>
                 </form>
-                <a th:href="@{/habito/cadastrar(usuarioId=${u.id})}">
-                    <button type="button">Adicionar Hábitos</button>
-                </a>
             </td>
         </tr>
         </tbody>
-
     </table>
 </div>
-
 </body>
 </html>

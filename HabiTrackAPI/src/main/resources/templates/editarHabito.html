@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Hábito</title>
+    <title>Editar Hábitos</title>
 </head>
 <body>
-    <h1>Cadastro de Hábitos</h1>
-    <form th:action="@{/habito/cadastrar}" th:object="${habito}" method="post">
+    <h1:>Editar Hábitos</h1>
+    <form th:action="@{/habito/editar}" th:object="${habito}" method="post">
         <input type="hidden" th:field="*{id}">
         <input type="hidden" th:name="usuarioId" th:value="${usuarioId}">
 
@@ -23,7 +23,7 @@
         <label>Objetivo:</label>
         <input type="text" th:field="*{objetivo}" required><br><br>
 
-        <button type="submit" th:text="${habito.id != null} ? 'Atualizar' : 'Salvar'">Enviar</button>
+        <button type="submit" th:text="${habito.id != null} ? 'Atualizar' : 'Salvar'">Editar</button>
     </form>
 </body>
 </html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Hábitos</title>
+</head>
+<body>
+
+<h1>Lista de Hábitos</h1>
+
+<a th:href="@{/habito/cadastrar}">
+    <button>Adicionar Novo Hábito</button>
+</a>
+
+<hr>
+
+<h2>Hábitos Cadastrados</h2>
+
+<div class="lista" id="lista">
+    <table border="1" cellpadding="5">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Categoria</th>
+            <th>Descrição</th>
+            <th>Objetivo</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="u : ${habito}">
+            <td th:text="${u.id}"></td>
+            <td th:text="${u.nome}"></td>
+            <td th:text="${u.categoria}"></td>
+            <td th:text="${u.descricao}"></td>
+            <td th:text="${u.objetivo}"></td>
+            <td>
+                <form th:action="@{/habito/{id}/editar(id=${u.id})}"
+                    method="get" style="display:inline;">
+                    <button type="submit" onclick="return confirm('Deseja editar este hábito?')">
+                        Editar
+                    </button>
+                </form>
+                <form th:action="@{/habito/{id}/delete(id=${u.id})}"
+                    method="get" style="display:inline;">
+                    <button type="submit" onclick="return confirm('Deseja excluir este hábito?')">
+                        Excluir
+                    </button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

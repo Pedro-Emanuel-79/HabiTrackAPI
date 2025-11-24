@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Usuário</title>
+    <title>Editar Usuário</title>
 
 </head>
 <body>
-    <h1>Cadastrar Usuário</h1>
-    <form th:action="@{/usuario/enviar}" th:object="${usuario}" method="post">
+    <h1>Editar Usuário</h1>
+    <form th:action="@{/usuario/editar}" th:object="${usuario}" method="post">
         <input type="hidden" th:field="*{id}">
 
         <label>Nome:</label>
@@ -38,7 +38,7 @@
         <label>Ocupação:</label>
         <input type="text" th:field="*{ocupacao}" required><br><br>
         
-        <button type="submit" th:text="${usuario.id != null} ? 'Atualizar' : 'Salvar'">Enviar</button>
+        <button type="submit" th:text="${usuario.id != null} ? 'Atualizar' : 'Salvar'">Editar</button>
         
     </form>
 </body>

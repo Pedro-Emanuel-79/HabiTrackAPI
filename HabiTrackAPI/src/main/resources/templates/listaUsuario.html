@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<h1>Lista de Usuários e Hábitos</h1>
+<h1>Lista de Usuários</h1>
 
 <a th:href="@{/usuario/cadastrar}">
     <button>Adicionar Novo Usuário</button>
@@ -69,12 +69,13 @@
                         Adicionar Hábito
                     </button>
                 </a>
-
-
             </td>
         </tr>
         </tbody>
     </table>
+    <button type="submit" onclick="return confirm('Deseja voltar para a lista de usuários?')">
+        <a th:href="@{/habito/listar}" >Voltar para à lista de habito</a>
+    </button>
 </div>
 </body>
 </html>

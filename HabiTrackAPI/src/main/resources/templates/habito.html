@@ -23,7 +23,10 @@
         <label>Objetivo:</label>
         <input type="text" th:field="*{objetivo}" required><br><br>
 
-        <button type="submit" th:text="${habito.id != null} ? 'Atualizar' : 'Salvar'">Enviar</button>
+        <button type="submit" th:text="${habito.id != null} ? 'Cadastrar' : 'Salvar'">Enviar</button>
+        <button type="submit" onclick="return confirm('Deseja voltar para a lista de usuários?')" >
+            <a th:href="@{/usuario/listar}" >Voltar para à lista de usuários</a>
+        </button>
     </form>
 </body>
 </html>

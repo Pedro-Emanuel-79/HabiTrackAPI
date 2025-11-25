@@ -21,16 +21,16 @@
         <input type="date" th:field="*{dataNascimento}" required><br><br>
 
         <label>CPF:</label>
-        <input type="text" th:field="*{cpf}" required><br><br>
+        <input type="text" maxlength="11" minlength="11" th:field="*{cpf}" required><br><br>
 
         <label>Email:</label>
         <input type="email" th:field="*{email}" required><br><br>
 
         <label>Telefone:</label>
-        <input type="tel" th:field="*{telefone}" required><br><br>
+        <input type="tel" maxlength="11" minlength="11" th:field="*{telefone}" required><br><br>
 
         <label>Senha:</label>
-        <input type="password" th:field="*{senha}" required><br><br>
+        <input type="password" maxlength="10" minlength="6" th:field="*{senha}" required><br><br>
         
         <label>Endereço:</label>
         <input type="text" th:field="*{endereco}" required><br><br>

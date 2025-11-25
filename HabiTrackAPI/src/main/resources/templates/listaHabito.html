@@ -42,14 +42,14 @@
 
             <td>
                 <form th:action="@{/habito/{id}/editar(id=${h.id})}"
-                      method="get" style="display:inline;">
+                    method="get" style="display:inline;">
                     <button type="submit" onclick="return confirm('Deseja editar este habito?')">
                         Editar
                     </button>
                 </form>
 
                 <form th:action="@{/habito/{id}/delete(id=${h.id})}"
-                      method="get" style="display:inline;">
+                    method="get" style="display:inline;">
                     <button type="submit" onclick="return confirm('Deseja excluir este habito?')">
                         Excluir
                     </button>
@@ -58,6 +58,9 @@
         </tr>
         </tbody>
     </table>
+                <button type="submit" onclick="return confirm('Deseja voltar para a lista de usuários?')">
+                <a th:href="@{/usuario/listar}">Voltar</a>
+                </button>
 </div>
 </body>
 </html>

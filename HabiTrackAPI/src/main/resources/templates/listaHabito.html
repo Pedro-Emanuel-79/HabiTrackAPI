@@ -22,30 +22,35 @@
         <thead>
         <tr>
             <th>ID</th>
-            <th>Nome</th>
+            <th>Nome do Hábito</th>
+            <th>Usuário</th>
             <th>Categoria</th>
             <th>Descrição</th>
             <th>Objetivo</th>
+            <th>Ações</th>
         </tr>
         </thead>
 
         <tbody>
-        <tr th:each="u : ${habito}">
-            <td th:text="${u.id}"></td>
-            <td th:text="${u.nome}"></td>
-            <td th:text="${u.categoria}"></td>
-            <td th:text="${u.descricao}"></td>
-            <td th:text="${u.objetivo}"></td>
+        <tr th:each="h : ${habitos}">
+            <td th:text="${h.id}"></td>
+            <td th:text="${h.nome}"></td>
+            <td th:text="${h.usuario != null ? h.usuario.nome : 'Sem usuário'}"></td>
+            <td th:text="${h.categoria}"></td>
+            <td th:text="${h.descricao}"></td>
+            <td th:text="${h.objetivo}"></td>
+
             <td>
-                <form th:action="@{/habito/{id}/editar(id=${u.id})}"
-                    method="get" style="display:inline;">
-                    <button type="submit" onclick="return confirm('Deseja editar este hábito?')">
+                <form th:action="@{/habito/{id}/editar(id=${h.id})}"
+                      method="get" style="display:inline;">
+                    <button type="submit" onclick="return confirm('Deseja editar este habito?')">
                         Editar
                     </button>
                 </form>
-                <form th:action="@{/habito/{id}/delete(id=${u.id})}"
-                    method="get" style="display:inline;">
-                    <button type="submit" onclick="return confirm('Deseja excluir este hábito?')">
+
+                <form th:action="@{/habito/{id}/delete(id=${h.id})}"
+                      method="get" style="display:inline;">
+                    <button type="submit" onclick="return confirm('Deseja excluir este habito?')">
                         Excluir
                     </button>
                 </form>

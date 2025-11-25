@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class HabitoViewController {
     @Autowired
@@ -18,10 +20,12 @@ public class HabitoViewController {
     private UsuarioService usuarioService;
 
     @GetMapping("/habito/listar")
-    public String listarHabito(Model model) {
-        model.addAttribute("habitos", habitoService.listarTodosHabitos());
+    public String listar(Model model) {
+        List<Habito> habitos = habitoService.findAll();
+        model.addAttribute("habitos", habitos);
         return "listaHabito";
     }
+
 
     @GetMapping("/habito/cadastrar")
     public String mostrarFormularioCadastro(@RequestParam Long usuarioId, Model model) {
@@ -46,7 +50,7 @@ public class HabitoViewController {
         // Salva
         habitoService.save(habito);
 
-        return "redirect:/usuario/listar";
+        return "redirect:/habito/listar";
     }
 
 

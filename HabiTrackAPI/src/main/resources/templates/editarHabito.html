@@ -6,10 +6,10 @@
     <title>Editar Hábitos</title>
 </head>
 <body>
-    <h1:>Editar Hábitos</h1>
-    <form th:action="@{/habito/editar}" th:object="${habito}" method="post">
+    <h1>Editar Hábitos</h1>
+    <form th:action="@{/habito/{id}/editar(id=${habito.id})}" th:object="${habito}" method="post">
         <input type="hidden" th:field="*{id}">
-        <input type="hidden" th:name="usuarioId" th:value="${usuarioId}">
+        <input type="hidden" th:name="habitoId" th:value="${habitoId}">
 
         <label>Nome:</label>
         <input type="text" th:field="*{nome}" required><br><br>

@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Editar Usuário</h1>
-    <form th:action="@{/usuario/editar}" th:object="${usuario}" method="post">
+    <form th:action="@{/usuario/{id}/editar(id=${usuario.id})}" th:object="${usuario}" method="post">
         <input type="hidden" th:field="*{id}">
 
         <label>Nome:</label>

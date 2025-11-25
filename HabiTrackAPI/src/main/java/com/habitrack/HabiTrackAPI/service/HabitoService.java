@@ -32,4 +32,7 @@ public class HabitoService {
     }
 
 
+    public List<Habito> findAll() {
+        return habitoRepository.findAll();
+    }
 }

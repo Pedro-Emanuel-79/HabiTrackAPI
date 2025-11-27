@@ -4,42 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Usuário</title>
-
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 </head>
 <body>
-    <h1>Cadastrar Usuário</h1>
-    <form th:action="@{/usuario/enviar}" th:object="${usuario}" method="post">
-        <input type="hidden" th:field="*{id}">
-
-        <label>Nome:</label>
-        <input type="text" th:field="*{nome}" required><br><br>
-
-        <label>Sobrenome:</label>
-        <input type="text" th:field="*{sobrenome}" required><br><br>
-
-        <label>Data de Nascimento:</label>
-        <input type="date" th:field="*{dataNascimento}" required><br><br>
-
-        <label>CPF:</label>
-        <input type="text" maxlength="11" minlength="11" th:field="*{cpf}" required><br><br>
-
-        <label>Email:</label>
-        <input type="email" th:field="*{email}" required><br><br>
-
-        <label>Telefone:</label>
-        <input type="tel" maxlength="11" minlength="11" th:field="*{telefone}" required><br><br>
-
-        <label>Senha:</label>
-        <input type="password" maxlength="10" minlength="6" th:field="*{senha}" required><br><br>
-        
-        <label>Endereço:</label>
-        <input type="text" th:field="*{endereco}" required><br><br>
-        
-        <label>Ocupação:</label>
-        <input type="text" th:field="*{ocupacao}" required><br><br>
-        
-        <button type="submit" th:text="${usuario.id != null} ? 'Cadastrar' : 'Salvar'">Enviar</button>
-        
-    </form>
+    <div class="cadastroUsuario-container" data-aos="zoom-in" data-aos-duration="1200">
+        <div class="cadastroUsuario-header">
+            <header data-aos="zoom-in-left" data-aos-duration="1400" data-aos-delay="200">Cadastrar Usuário</header>
+        </div>
+        <form th:action="@{/usuario/enviar}" th:object="${usuario}" method="post">
+            <input type="hidden" th:field="*{id}">
+            <div class="input-box">
+                <input type="text" class="input-field" placeholder="Nome" th:field="*{nome}" required>
+            </div>
+            <div class="input-box">
+                <input type="text" class="input-field" placeholder="Sobrenome" th:field="*{sobrenome}" required>
+            </div>
+            <div class="input-box">
+                <input type="date" class="input-field" placeholder="Data de Nascimento" th:field="*{dataNascimento}" required>
+            </div>
+            <div class="input-box">
+                <input type="text" class="input-field" placeholder="CPF" maxlength="11" minlength="11" th:field="*{cpf}" required>
+            </div>
+            <div class="input-box">
+                <input type="email" class="input-field" placeholder="Email" th:field="*{email}" required>
+            </div>
+            <div class="input-box">
+                <input type="tel" class="input-field" placeholder="Telefone" maxlength="11" minlength="11" th:field="*{telefone}" required>
+            </div>
+            <div class="input-box">
+                <input type="password" class="input-field" placeholder="Senha" maxlength="10" minlength="6" th:field="*{senha}" required>
+            </div>
+            <div class="input-box">
+                <input type="text" class="input-field" placeholder="Endereço" th:field="*{endereco}" required>
+            </div>         
+            <div class="input-box">
+                <input type="text" class="input-field" placeholder="Ocupação" th:field="*{ocupacao}" required>
+            </div>
+            <div class="input-subimit">
+                <button type="submit" class="submit-btn" th:text="${usuario.id != null} ? 'Cadastrar' : 'Salvar'"></button>
+            </div>
+            <div class="voltar-link">
+                    <a th:href="@{/usuario/listar}" >Voltar para à lista de usuários</a>
+            </div>          
+        </form>
+    </div>
+    <script>
+        AOS.init();
+    </script>
 </body>
 </html>

@@ -4,59 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Hábitos</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 </head>
 <body>
+    <div class="list-container" id="lista" data-aos="fade-up" data-aos-duration="1200">
+        <div class="list-header">
+            <h1 data-aos-duration="1400" data-aos-delay="200">Lista de Hábitos</h1>
+        </div>
+        <main class="table">
+            <section class="table-header">
+                <h2>Hábitos Cadastrados</h2>
+            </section>
+            <section class="table-body">
+                <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome do Hábito</th>
+                <th>Usuário</th>
+                <th>Categoria</th>
+                <th>Descrição</th>
+                <th>Objetivo</th>
+                <th>Ações</th>
+            </tr>
+            </thead>
 
-<h1>Lista de Hábitos</h1>
+            <tbody>
+            <tr th:each="h : ${habitos}">
+                <td th:text="${h.id}"></td>
+                <td th:text="${h.nome}"></td>
+                <td th:text="${h.usuario != null ? h.usuario.nome : 'Sem usuário'}"></td>
+                <td th:text="${h.categoria}"></td>
+                <td th:text="${h.descricao}"></td>
+                <td th:text="${h.objetivo}"></td>
 
-<hr>
+                <td>
+                    <form th:action="@{/habito/{id}/editar(id=${h.id})}"
+                        method="get" style="display:inline;">
+                        <button type="submit" onclick="return confirm('Deseja editar este habito?')" class="editar-btn">
+                            Editar
+                        </button>
+                    </form>
 
-<h2>Hábitos Cadastrados</h2>
-
-<div class="lista" id="lista">
-    <table border="1" cellpadding="5">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nome do Hábito</th>
-            <th>Usuário</th>
-            <th>Categoria</th>
-            <th>Descrição</th>
-            <th>Objetivo</th>
-            <th>Ações</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        <tr th:each="h : ${habitos}">
-            <td th:text="${h.id}"></td>
-            <td th:text="${h.nome}"></td>
-            <td th:text="${h.usuario != null ? h.usuario.nome : 'Sem usuário'}"></td>
-            <td th:text="${h.categoria}"></td>
-            <td th:text="${h.descricao}"></td>
-            <td th:text="${h.objetivo}"></td>
-
-            <td>
-                <form th:action="@{/habito/{id}/editar(id=${h.id})}"
-                    method="get" style="display:inline;">
-                    <button type="submit" onclick="return confirm('Deseja editar este habito?')">
-                        Editar
-                    </button>
-                </form>
-
-                <form th:action="@{/habito/{id}/delete(id=${h.id})}"
-                    method="get" style="display:inline;">
-                    <button type="submit" onclick="return confirm('Deseja excluir este habito?')">
-                        Excluir
-                    </button>
-                </form>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-                <button type="submit" onclick="return confirm('Deseja voltar para a lista de usuários?')">
-                    <a th:href="@{/usuario/listar}" >Voltar para à lista de usuários</a>
-                </button>
-</div>
+                    <form th:action="@{/habito/{id}/delete(id=${h.id})}"
+                        method="get" style="display:inline;">
+                        <button type="submit" onclick="return confirm('Deseja excluir este habito?')" class="excluir-btn">
+                            Excluir
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+            </section>
+        </main>
+        <div class="voltar-link">
+            <a th:href="@{/usuario/listar}" >Voltar para à lista de usuários</a> 
+        </div>             
+    </div>
+    <script>
+        AOS.init();
+    </script>
 </body>
 </html>

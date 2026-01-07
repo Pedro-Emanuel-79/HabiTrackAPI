@@ -1,2 +1,2 @@
 # HabiTrackAPI
-Projeto da faculdade-Controle de Hábitos
+Projeto da faculdade - Controle de Hábitos

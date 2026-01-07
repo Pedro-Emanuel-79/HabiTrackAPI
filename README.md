@@ -1,2 +1,3 @@
 # HabiTrackAPI
-Rastrear Hábitos
+Projeto da faculdade
+Controle de Hábitos

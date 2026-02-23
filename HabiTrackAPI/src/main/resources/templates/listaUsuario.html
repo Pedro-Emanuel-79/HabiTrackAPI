@@ -4,84 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Usuários</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 </head>
 <body>
-<div class="list-container" id="lista" data-aos="fade-up" data-aos-duration="1400">
-    <div class="list-header">
-        <h1 data-aos="zoom-in-left" data-aos-duration="1400" data-aos-delay="100">Lista de Usuários</h1>
-        <a th:href="@{/usuario/cadastrar}" class="btn-add" data-aos="fade-right" data-aos-duration="1200">
-            Adicionar Usuário
-        </a>
-    </div>
-    <main class="table">
-        <section class="table-header">
-            <h2>Usuários Cadastrados</h2>
-        </section>
-        <section class="table-body">
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Sobrenome</th>
-                        <th>Data de Nascimento</th>
-                        <th>CPF</th>
-                        <th>Email</th>
-                        <th>Telefone</th>
-                        <th>Senha</th>
-                        <th>Endereço</th>
-                        <th>Ocupação</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="u : ${usuarios}">
-                        <td th:text="${u.id}"></td>
-                        <td th:text="${u.nome}"></td>
-                        <td th:text="${u.sobrenome}"></td>
-                        <td th:text="${u.dataNascimento}"></td>
-                        <td th:text="${u.cpf}"></td>
-                        <td th:text="${u.email}"></td>
-                        <td th:text="${u.telefone}"></td>
-                        <td th:text="${u.senha}"></td>
-                        <td th:text="${u.endereco}"></td>
-                        <td th:text="${u.ocupacao}"></td> 
-                        <td>
-                            <form th:action="@{/usuario/{id}/editar(id=${u.id})}"
-                                method="get" style="display:inline;">
-                                <button type="submit" onclick="return confirm('Deseja editar este usuário?')" class="editar-btn">
-                                    Editar
-                                </button>
-                            </form>
-                            <form th:action="@{/usuario/{id}/delete(id=${u.id})}"
-                                method="get" style="display:inline;">
-                                <button type="submit" onclick="return confirm('Deseja excluir este usuário?')" class="excluir-btn">
-                                    Excluir
-                                </button>
-                            </form>
-                            <a th:href="@{/habito/cadastrar(usuarioId=${u.id})}"
-                                style="display:inline;">
-                                <button type="button" class="add-habito-btn">
-                                    Adicionar Hábito
-                                </button>
-                            </a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-    </main>
-    <div class="voltar-link">
-        <a th:href="@{/habito/listar}">
-            Ir para à lista de habito
-        </a>
-    </div>
+
+<h1>Lista de Usuários</h1>
+
+<a th:href="@{/usuario/cadastrar}">
+    <button>Adicionar Novo Usuário</button>
+</a>
+
+<hr>
+
+<h2>Usuários Cadastrados</h2>
+
+<div class="lista" id="lista">
+    <table border="1" cellpadding="5">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Sobrenome</th>
+            <th>Data de Nascimento</th>
+            <th>CPF</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>Senha</th>
+            <th>Endereço</th>
+            <th>Ocupação</th>
+            <th>Ações</th>
+
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="u : ${usuarios}">
+            <td th:text="${u.id}"></td>
+            <td th:text="${u.nome}"></td>
+            <td th:text="${u.sobrenome}"></td>
+            <td th:text="${u.dataNascimento}"></td>
+            <td th:text="${u.cpf}"></td>
+            <td th:text="${u.email}"></td>
+            <td th:text="${u.telefone}"></td>
+            <td th:text="${u.senha}"></td>
+            <td th:text="${u.endereco}"></td>
+            <td th:text="${u.ocupacao}"></td>
+
+
+            <td>
+                <form th:action="@{/usuario/{id}/editar(id=${u.id})}"
+                    method="get" style="display:inline;">
+                    <button type="submit" onclick="return confirm('Deseja editar este usuário?')">
+                        Editar
+                    </button>
+                </form>
+                <form th:action="@{/usuario/{id}/delete(id=${u.id})}"
+                    method="get" style="display:inline;">
+                    <button type="submit" onclick="return confirm('Deseja excluir este usuário?')">
+                        Excluir
+                    </button>
+                </form>
+                <a th:href="@{/habito/cadastrar(usuarioId=${u.id})}"
+                    style="display:inline;">
+                    <button type="button">
+                        Adicionar Hábito
+                    </button>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <button type="submit" onclick="return confirm('Deseja voltar para a lista de usuários?')">
+        <a th:href="@{/habito/listar}" >Voltar para à lista de habito</a>
+    </button>
 </div>
-<script>
-    AOS.init();
-</script>
 </body>
 </html>
